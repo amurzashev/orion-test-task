@@ -1,11 +1,11 @@
-enum TypeEnum {
+export enum TypeEnum {
   NUMERIC,
   STRING,
   DATE,
   TIMESTAMP,
 }
 
-interface Config {
+export interface Config {
   [key: string]: {
     width: number,
     label: string,
