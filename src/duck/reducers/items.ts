@@ -1,6 +1,6 @@
 import { ItemsActionTypes, ItemsState, ITEMS_LOADING_START, ITEMS_LOADING_ERROR, ITEMS_LOADING_FINISH } from '../types/items';
 
-const initialState = {
+const initialState: ItemsState = {
   data: null,
   loading: false,
   error: false,

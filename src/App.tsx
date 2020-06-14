@@ -1,6 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadConfig } from 'src/duck/actions/config';
+import { RootState } from './duck';
 
 const App:FC = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state);
+  console.log(state);
+  useEffect(() => {
+    dispatch(loadConfig());
+  }, [dispatch]);
   return (
     <div className="App">
       <header className="App-header">

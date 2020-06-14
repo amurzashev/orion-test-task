@@ -1,15 +1,15 @@
 import { createStore, applyMiddleware, Action } from 'redux';
-import rootReducer from './reducers';
 import thunk, { ThunkAction } from 'redux-thunk';
+import reducers from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+
 export default () => {
-  const devToolsEnhancer = composeWithDevTools({});
-  const store = createStore(rootReducer, {}, devToolsEnhancer(applyMiddleware(thunk)));
+  const store = createStore(reducers, {}, composeWithDevTools(applyMiddleware(thunk)));
   return { store };
 };
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof reducers>
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

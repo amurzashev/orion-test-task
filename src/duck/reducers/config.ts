@@ -1,6 +1,6 @@
 import { ConfigActionTypes, ConfigState, CONFIG_LOADING_ERROR, CONFIG_LOADING_FINISH, CONFIG_LOADING_START } from '../types/config';
 
-const initialState = {
+const initialState: ConfigState = {
   data: null,
   loading: false,
   error: false,
