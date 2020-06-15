@@ -1,6 +1,10 @@
 import styled from 'src/ui/styled';
-import Row from '../Row';
 
-export default styled(Row)`
+export default styled.div`
+  display: flex;
+  flex-direction: row;
   background: ${props => props.theme.colors.primary.blue};
+  & > div {
+    margin-right: 10px;
+  }
 `;
