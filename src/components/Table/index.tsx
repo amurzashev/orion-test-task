@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { Table as VTable, Column, AutoSizer } from 'react-virtualized';
 import { RootState } from 'src/duck';
 import { TableProps } from './types';
-import { Page, Row, HeaderRow, HeaderCell, Cell } from 'src/ui/components';
-
+import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue } from 'src/ui/components';
 
 const Table: FC<TableProps> = ({ items, config }) => {
   return (
@@ -49,11 +48,13 @@ const Table: FC<TableProps> = ({ items, config }) => {
                 headerRenderer={({ label, dataKey }) => (
                   <HeaderCell w={config[col].width} key={dataKey}>{label}</HeaderCell>
                 )}
-                cellRenderer={({ rowData, dataKey }) => (
-                  <Cell w={config[col].width} centered={false}>
-                    {rowData[dataKey]}
-                  </Cell>
-                )}
+                cellRenderer={({ rowData, dataKey }) => {
+                  return (
+                    <Cell w={config[col].width} centered={false}>
+                      {renderValue({ renderVal: rowData[dataKey], type: config[col].type })}
+                    </Cell>
+                  );
+                }}
               />
             ))}
             <Column

@@ -1,15 +1,8 @@
-export enum TypeEnum {
-  NUMERIC,
-  STRING,
-  DATE,
-  TIMESTAMP,
-}
-
 export interface Config {
   [key: string]: {
     width: number,
     label: string,
-    type: TypeEnum,
+    type: 'NUMERIC' | 'STRING' | 'DATE' | 'TIMESTAMP',
   }
 }
 

@@ -4,3 +4,4 @@ export { default as HeaderCell } from './HeaderCell';
 export { default as HeaderRow } from './HeaderRow';
 export { default as FullscreenPlaceholder } from './FullscreenPlaceholder';
 export { default as Page } from './Page';
+export { default as renderValue } from './Value';
