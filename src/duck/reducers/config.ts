@@ -8,25 +8,25 @@ const initialState: ConfigState = {
 
 export default (state = initialState, action: ConfigActionTypes): ConfigState => {
   switch (action.type) {
-    case CONFIG_LOADING_START:
-      return {
-        data: null,
-        loading: true,
-        error: false,
-      };
-    case CONFIG_LOADING_ERROR:
-      return {
-        data: null,
-        loading: false,
-        error: true,
-      };
-      case CONFIG_LOADING_FINISH:
-        return {
-          data: action.payload.data,
-          loading: false,
-          error: false,
-        };
-    default:
-      return state;
+  case CONFIG_LOADING_START:
+    return {
+      data: null,
+      loading: true,
+      error: false,
+    };
+  case CONFIG_LOADING_ERROR:
+    return {
+      data: null,
+      loading: false,
+      error: true,
+    };
+  case CONFIG_LOADING_FINISH:
+    return {
+      data: action.payload.data,
+      loading: false,
+      error: false,
+    };
+  default:
+    return state;
   }
 };

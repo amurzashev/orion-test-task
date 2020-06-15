@@ -17,10 +17,10 @@ export const loadConfig = (): AppThunk => async dispatch => {
       payload: {
         data: response.data.config,
       },
-    })
+    });
   } catch (err) {
     dispatch({
       type: CONFIG_LOADING_ERROR,
-    })
+    });
   }
 };

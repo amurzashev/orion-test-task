@@ -6,18 +6,18 @@ const App: FC<AppProps> = ({ items, config, loadConfig, loadItems }) => {
   const loadData = () => {
     loadItems();
     loadConfig();
-  }
+  };
   useEffect(() => {
     if (!items.data || !config.data) {
       loadData();
     }
-  }, [])
+  }, []);
   if (items.loading || config.loading) {
     return (
       <FullscreenPlaceholder>
         <h2>Loading</h2>
       </FullscreenPlaceholder>
-    )
+    );
   }
   if (items.error || config.error) {
     return (
@@ -32,7 +32,7 @@ const App: FC<AppProps> = ({ items, config, loadConfig, loadItems }) => {
   }
   return (
     <div>app</div>
-  )
+  );
 };
 
 export default App;

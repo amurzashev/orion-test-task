@@ -17,10 +17,10 @@ export const loadItems = (): AppThunk => async dispatch => {
       payload: {
         data: response.data.items,
       },
-    })
+    });
   } catch (err) {
     dispatch({
       type: ITEMS_LOADING_ERROR,
-    })
+    });
   }
 };
