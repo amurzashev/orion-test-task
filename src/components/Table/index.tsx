@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import { Table as VTable, Column, AutoSizer } from 'react-virtualized';
 import { RootState } from 'src/duck';
@@ -6,6 +6,18 @@ import { TableProps } from './types';
 import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue } from 'src/ui/components';
 
 const Table: FC<TableProps> = ({ items, config }) => {
+  const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
+  const [editing, setIsEditing] = useState(false);
+  const onButtonClick = (rowIndex: number): void => {
+    if (editing) {
+      console.log('saving');
+      setEditingRowIndex(null);
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+      setEditingRowIndex(rowIndex);
+    }
+  };
   return (
     <Page>
       <AutoSizer>
@@ -48,10 +60,11 @@ const Table: FC<TableProps> = ({ items, config }) => {
                 headerRenderer={({ label, dataKey }) => (
                   <HeaderCell w={config[col].width} key={dataKey}>{label}</HeaderCell>
                 )}
-                cellRenderer={({ rowData, dataKey }) => {
+                cellRenderer={({ rowData, dataKey, rowIndex }) => {
+                  const shouldColor = dataKey === 'VALUE_1';
                   return (
-                    <Cell w={config[col].width} centered={false}>
-                      {renderValue({ renderVal: rowData[dataKey], type: config[col].type })}
+                    <Cell w={config[col].width} centered={false} fillColor={shouldColor && rowData[dataKey]}>
+                      {renderValue({ renderVal: rowData[dataKey], type: config[col].type, disabled: editingRowIndex !== rowIndex })}
                     </Cell>
                   );
                 }}
@@ -60,9 +73,11 @@ const Table: FC<TableProps> = ({ items, config }) => {
             <Column
               dataKey={'button'}
               width={80}
-              cellRenderer={() => (
+              cellRenderer={({ rowIndex }) => (
                 <Cell w={80} centered>
-                  <button>edit</button>
+                  <button onClick={() => onButtonClick(rowIndex)} disabled={editing && editingRowIndex !== rowIndex}>
+                    {rowIndex === editingRowIndex ? 'save' : 'edit'}
+                  </button>
                 </Cell>
               )}
             />

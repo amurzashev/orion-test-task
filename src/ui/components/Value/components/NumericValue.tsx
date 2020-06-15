@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react';
 import { ValueProps } from './types';
+import { Input } from './shared';
 
-const NumericValue: FC<ValueProps> = ({ renderVal }) => {
+const NumericValue: FC<ValueProps> = ({ renderVal, disabled }) => {
   const [val, setVal] = useState(renderVal);
   return (
-    <input type='number' value={val} onChange={e => setVal(e.target.value)} />
+    <Input type='number' value={val} onChange={e => setVal(e.target.value)} disabled={disabled} />
   );
 };
 
