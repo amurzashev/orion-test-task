@@ -8,11 +8,11 @@ const components = {
   TIMESTAMP,
 };
 
-interface V {
+interface FuncArgs {
   type: 'STRING' | 'NUMERIC' | 'DATE' | 'TIMESTAMP'
   renderVal: string
 }
 // @ts-ignore
-const renderValue = ({ type, renderVal }: V) => React.createElement(components[type], { renderVal });
+const renderValue = ({ type, renderVal }: FuncArgs) => React.createElement(components[type], { renderVal });
 
 export default renderValue;
