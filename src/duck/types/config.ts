@@ -1,22 +1,15 @@
-export enum TypeEnum {
-  NUMERIC,
-  STRING,
-  DATE,
-  TIMESTAMP,
-}
-
 export interface Config {
   [key: string]: {
     width: number,
     label: string,
-    type: TypeEnum,
+    type: 'NUMERIC' | 'STRING' | 'DATE' | 'TIMESTAMP',
   }
 }
 
 export interface ConfigState {
   loading: boolean
   error: boolean
-  data: Config | null
+  data: Config
 }
 
 export const CONFIG_LOADING_START = 'CONFIG_LOADING_START';

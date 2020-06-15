@@ -20,19 +20,19 @@ export interface Item {
   VALUE_3: number,
   UPDATED_BY: string,
   UPDATE_TIMESTAMP: string,
-  [key: string]: any // just in case
 }
 
 export interface ItemsState {
   loading: boolean
   error: boolean
-  data: Item[] | null
+  data: Item[]
 }
 
 
 export const ITEMS_LOADING_START = 'ITEMS_LOADING_START';
 export const ITEMS_LOADING_ERROR = 'ITEMS_LOADING_ERROR';
 export const ITEMS_LOADING_FINISH = 'ITEMS_LOADING_FINISH';
+export const ITEMS_UPDATE_ITEM = 'ITEMS_UPDATE_ITEM';
 
 interface ItemsLoadStartAction {
   type: typeof ITEMS_LOADING_START,
@@ -49,4 +49,12 @@ interface ItemsLoadFinishAction {
   }
 }
 
-export type ItemsActionTypes = ItemsLoadStartAction | ItemsLoadErrorAction | ItemsLoadFinishAction
+interface ItemsUpdateItem {
+  type: typeof ITEMS_UPDATE_ITEM,
+  payload: {
+    item: Item
+    index: number
+  }
+}
+
+export type ItemsActionTypes = ItemsLoadStartAction | ItemsLoadErrorAction | ItemsLoadFinishAction | ItemsUpdateItem

@@ -1,5 +1,5 @@
 import api from 'src/api';
-import { ITEMS_LOADING_ERROR, ITEMS_LOADING_FINISH, ITEMS_LOADING_START, Item } from '../types/items';
+import { ITEMS_LOADING_ERROR, ITEMS_LOADING_FINISH, ITEMS_LOADING_START, ITEMS_UPDATE_ITEM, Item } from '../types/items';
 import { AppThunk } from '..';
 
 interface AxiosResponse {
@@ -23,4 +23,14 @@ export const loadItems = (): AppThunk => async dispatch => {
       type: ITEMS_LOADING_ERROR,
     });
   }
+};
+
+export const updateItem = (item: Item, index: number): AppThunk => dispatch => {
+  dispatch({
+    type: ITEMS_UPDATE_ITEM,
+    payload: {
+      item,
+      index,
+    }
+  });
 };
