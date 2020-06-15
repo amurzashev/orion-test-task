@@ -6,7 +6,7 @@ interface AxiosResponse {
   items: Item[]
 }
 
-export const loadConfig = (): AppThunk => async dispatch => {
+export const loadItems = (): AppThunk => async dispatch => {
   dispatch({
     type: ITEMS_LOADING_START, 
   });

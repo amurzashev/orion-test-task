@@ -24,7 +24,7 @@ export default (state = initialState, action: ConfigActionTypes): ConfigState =>
         return {
           data: action.payload.data,
           loading: false,
-          error: true,
+          error: false,
         };
     default:
       return state;
