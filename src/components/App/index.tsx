@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { AppProps } from './types';
 import { FullscreenPlaceholder } from 'src/ui/components';
+import { Table } from '..';
 
 const App: FC<AppProps> = ({ items, config, loadConfig, loadItems }) => {
   const loadData = () => {
@@ -8,9 +9,10 @@ const App: FC<AppProps> = ({ items, config, loadConfig, loadItems }) => {
     loadConfig();
   };
   useEffect(() => {
-    if (!items.data || !config.data) {
+    if (!items.data.length || !Object.keys(config.data).length) {
       loadData();
     }
+  // eslint-disable-next-line
   }, []);
   if (items.loading || config.loading) {
     return (
@@ -30,9 +32,7 @@ const App: FC<AppProps> = ({ items, config, loadConfig, loadItems }) => {
   if (!items.data || !config.data) {
     return null;
   }
-  return (
-    <div>app</div>
-  );
+  return <Table />;
 };
 
 export default App;

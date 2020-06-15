@@ -1,7 +1,7 @@
 import { ItemsActionTypes, ItemsState, ITEMS_LOADING_START, ITEMS_LOADING_ERROR, ITEMS_LOADING_FINISH } from '../types/items';
 
 const initialState: ItemsState = {
-  data: null,
+  data: [],
   loading: false,
   error: false,
 };
@@ -10,13 +10,13 @@ export default (state = initialState, action: ItemsActionTypes): ItemsState => {
   switch (action.type) {
   case ITEMS_LOADING_START:
     return {
-      data: null,
+      data: [],
       loading: true,
       error: false,
     };
   case ITEMS_LOADING_ERROR:
     return {
-      data: null,
+      data: [],
       loading: false,
       error: true,
     };

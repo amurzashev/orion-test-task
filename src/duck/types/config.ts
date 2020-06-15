@@ -16,7 +16,7 @@ export interface Config {
 export interface ConfigState {
   loading: boolean
   error: boolean
-  data: Config | null
+  data: Config
 }
 
 export const CONFIG_LOADING_START = 'CONFIG_LOADING_START';

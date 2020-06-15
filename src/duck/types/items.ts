@@ -20,13 +20,12 @@ export interface Item {
   VALUE_3: number,
   UPDATED_BY: string,
   UPDATE_TIMESTAMP: string,
-  [key: string]: any // just in case
 }
 
 export interface ItemsState {
   loading: boolean
   error: boolean
-  data: Item[] | null
+  data: Item[]
 }
 
 
