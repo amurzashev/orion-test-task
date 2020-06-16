@@ -8,13 +8,14 @@ import { TableProps } from './types';
 import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue, Footer, Button, FullscreenPlaceholder } from 'src/ui/components';
 import FilterModal from './FilterModal';
 import orderBy from 'lodash/orderBy';
+import { Item } from 'src/duck/types/items';
 
 const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsAction }) => {
   const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [editing, setIsEditing] = useState(false);
-  const [sortedItems, setSortedItems] = useState(items);
   const [sortDirection, setSortDirection] = useState<any>('asc');
+  const [sortedItems, setSortedItems] = useState(items);
+  const [editing, setIsEditing] = useState(false);
   const [sortBy, setSortBy] = useState<string>();
   const [key, setKey] = useState(1);
   const onButtonClick = (rowIndex: number): void => {
@@ -38,6 +39,10 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
     setKey(key + 1); // workaround
     setSortBy(sortBy);
     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+  };
+  const setItems = (items: Item[]) => {
+    setSortedItems(items);
+    setKey(key + 1);
   };
   return (
     <Page>
@@ -117,7 +122,7 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
         <Button onClick={() => setIsModalOpen(!isModalOpen)}>filter</Button>
         <Button onClick={reloadData}>reload data</Button>
       </Footer>
-      <FilterModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <FilterModal items={sortedItems} setItems={setItems} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </Page>
   );
 };
