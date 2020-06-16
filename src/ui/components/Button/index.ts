@@ -6,7 +6,7 @@ interface ButtonProps {
   appearance?: Appearance
 }
 
-const setColor = (appearance: Appearance, colors: Colors): string => {
+const setColor = (appearance: Appearance = 'default', colors: Colors): string => {
   switch(appearance) {
   case 'default':
     return colors.primary.blue;
@@ -23,12 +23,9 @@ const Button = styled.button<ButtonProps>`
   min-width: 120px;
   border: 0;
   color: #fff;
-  background: ${props => setColor(props.appearance = 'default', props.theme.colors)};
+  background: ${props => setColor(props.appearance, props.theme.colors)};
   cursor: pointer;
   border-radius: 2px;
 `;
 
-Button.defaultProps = {
-  appearance: 'default',
-};
 export default Button;

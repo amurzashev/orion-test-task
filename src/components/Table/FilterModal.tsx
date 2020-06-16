@@ -64,7 +64,12 @@ const FilterModal: FC<FilterModalProps> = ({ isModalOpen, setIsModalOpen, items 
       <Box mb={10}>
         <Input type='number' value={Val3} onChange={e => setVal3(e.target.value)} placeholder='Min value of Max Range' />
       </Box>
-      <Button onClick={applyFilter}>Apply filters</Button>
+      <Box flexDirection='row' display='flex'>
+        <Button onClick={applyFilter}>Submit</Button>
+        <Box ml={10}>
+          <Button appearance='warning' onClick={() => setIsModalOpen(!isModalOpen)}>Cancel</Button>
+        </Box>
+      </Box>
     </Modal>
   );
 };
