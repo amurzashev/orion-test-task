@@ -22,6 +22,7 @@
     "gh-pages": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-virtualized": "^9.21.2",
@@ -56,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-modal": "^3.10.5",
     "@types/react-redux": "^7.1.9",
     "eslint": "^6.6.0"
   }

@@ -4,9 +4,11 @@ import { Table as VTable, Column, AutoSizer } from 'react-virtualized';
 import { RootState } from 'src/duck';
 import { TableProps } from './types';
 import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue, Footer, Button } from 'src/ui/components';
+import Modal from 'react-modal';
 
 const Table: FC<TableProps> = ({ items, config }) => {
   const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [editing, setIsEditing] = useState(false);
   const onButtonClick = (rowIndex: number): void => {
     if (editing) {
@@ -85,9 +87,15 @@ const Table: FC<TableProps> = ({ items, config }) => {
         )}
       </AutoSizer>
       <Footer>
-        <Button>filter</Button>
+        <Button onClick={() => setIsModalOpen(!isModalOpen)}>filter</Button>
         <Button>reload data</Button>
       </Footer>
+      <Modal
+        isOpen={isModalOpen}
+        shouldCloseOnEsc
+        shouldCloseOnOverlayClick
+        onRequestClose={() => setIsModalOpen(!isModalOpen)}
+      />
     </Page>
   );
 };
