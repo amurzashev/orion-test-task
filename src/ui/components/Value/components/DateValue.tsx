@@ -1,10 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import DatePicker from 'react-date-picker';
 
-const DateValue: FC = () => {
+interface DateProps {
+  disabled: boolean
+  renderVal: string
+}
+
+const DateValue: FC<DateProps> = ({ renderVal, disabled }) => {
+  const [date, setDate] = useState<Date | Date[]>(new Date(renderVal));
   return (
-    <div>
-      <p>date</p>
-    </div>
+    <DatePicker
+      value={date}
+      disabled={disabled}
+      onChange={setDate}
+    />
   );
 };
 
