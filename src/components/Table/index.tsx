@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Table as VTable, Column, AutoSizer } from 'react-virtualized';
 import { RootState } from 'src/duck';
 import { TableProps } from './types';
-import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue } from 'src/ui/components';
+import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue, Footer, Button } from 'src/ui/components';
 
 const Table: FC<TableProps> = ({ items, config }) => {
   const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
@@ -84,6 +84,10 @@ const Table: FC<TableProps> = ({ items, config }) => {
           </VTable>
         )}
       </AutoSizer>
+      <Footer>
+        <Button>filter</Button>
+        <Button>reload data</Button>
+      </Footer>
     </Page>
   );
 };
