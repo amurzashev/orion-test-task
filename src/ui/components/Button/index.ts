@@ -3,7 +3,7 @@ import { Colors } from 'src/ui/styled/theme/colors';
 
 type Appearance = 'default' | 'warning'
 interface ButtonProps {
-  appearance: Appearance
+  appearance?: Appearance
 }
 
 const setColor = (appearance: Appearance, colors: Colors): string => {
@@ -23,7 +23,7 @@ const Button = styled.button<ButtonProps>`
   min-width: 120px;
   border: 0;
   color: #fff;
-  background: ${props => setColor(props.appearance, props.theme.colors)};
+  background: ${props => setColor(props.appearance = 'default', props.theme.colors)};
   cursor: pointer;
   border-radius: 2px;
 `;
