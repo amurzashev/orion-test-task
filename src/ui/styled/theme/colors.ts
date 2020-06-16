@@ -1,4 +1,4 @@
-export default {
+const colors = {
   primary: {
     blue: '#5AA9E6',
     red: '#F50049',
@@ -9,3 +9,6 @@ export default {
     white: '#F9F9F9',
   },
 };
+
+export type Colors = typeof colors;
+export default colors;

@@ -20,8 +20,11 @@
     "emotion-theming": "^10.0.27",
     "eslint-plugin-react": "^7.20.0",
     "gh-pages": "^3.0.0",
+    "lodash": "^4.17.15",
     "react": "^16.13.1",
+    "react-date-picker": "^8.0.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-virtualized": "^9.21.2",
@@ -29,6 +32,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "styled-system": "^5.1.5",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -38,7 +42,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix ./src/**.tsx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,7 +60,10 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.155",
+    "@types/react-modal": "^3.10.5",
     "@types/react-redux": "^7.1.9",
+    "@types/styled-system": "^5.1.9",
     "eslint": "^6.6.0"
   }
 }

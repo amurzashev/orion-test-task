@@ -1,16 +1,10 @@
-export enum SourceNMEnum {
-  PROD,
-  UAT,
-  DEV,
-}
-
 export interface Item {
   RN: number,
   IS_ACTIVE: 0 | 1,
   ID: string,
   DESCRIPTION: string,
   SOURCE_ID: number,
-  SOURCE_NM: SourceNMEnum,
+  SOURCE_NM: 'PROD' | 'UAT' | 'DEV',
   CLIENT_ID: number,
   CLIENT_NM: string,
   ACTIVATION_DT: string,

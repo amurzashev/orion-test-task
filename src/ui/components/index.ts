@@ -1,4 +1,6 @@
 export { default as Row } from './Row';
+export { default as Box } from './Box';
+export { default as Input } from './Input';
 export { default as Cell } from './Cell';
 export { default as HeaderCell } from './HeaderCell';
 export { default as HeaderRow } from './HeaderRow';
