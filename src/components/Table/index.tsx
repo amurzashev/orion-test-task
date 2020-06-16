@@ -47,7 +47,6 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
             <VTable
               key={key}
               height={height}
-              onRowsRendered={() => { return; }}
               sort={_sort}
               width={width}
               rowCount={sortedItems.length}
