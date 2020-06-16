@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/orion-test-task/static/css/main.6f3e0747.chunk.css",
+    "main.js": "/orion-test-task/static/js/main.a14bcdab.chunk.js",
+    "main.js.map": "/orion-test-task/static/js/main.a14bcdab.chunk.js.map",
+    "runtime-main.js": "/orion-test-task/static/js/runtime-main.540793aa.js",
+    "runtime-main.js.map": "/orion-test-task/static/js/runtime-main.540793aa.js.map",
+    "static/js/2.783009b3.chunk.js": "/orion-test-task/static/js/2.783009b3.chunk.js",
+    "static/js/2.783009b3.chunk.js.map": "/orion-test-task/static/js/2.783009b3.chunk.js.map",
+    "index.html": "/orion-test-task/index.html",
+    "precache-manifest.ef32acbe3f909f62da05e064ef2f1557.js": "/orion-test-task/precache-manifest.ef32acbe3f909f62da05e064ef2f1557.js",
+    "service-worker.js": "/orion-test-task/service-worker.js",
+    "static/css/main.6f3e0747.chunk.css.map": "/orion-test-task/static/css/main.6f3e0747.chunk.css.map",
+    "static/js/2.783009b3.chunk.js.LICENSE.txt": "/orion-test-task/static/js/2.783009b3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.540793aa.js",
+    "static/js/2.783009b3.chunk.js",
+    "static/css/main.6f3e0747.chunk.css",
+    "static/js/main.a14bcdab.chunk.js"
+  ]
+}
