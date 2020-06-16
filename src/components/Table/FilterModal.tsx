@@ -15,7 +15,8 @@ const FilterModal: FC<FilterModalProps> = ({ isModalOpen, setIsModalOpen, items,
   const [description, setDescription] = useState('');
   const [source, setSource] = useState('');
   const [client, setClient] = useState('');
-  const [date, setDate] = useState<Date | Date[] | null>(null);
+  const [datePickerDate, setDatePickerDate] = useState<Date | Date[] | null>(null);
+  const [date, setDate] = useState('');
   const [Val3, setVal3] = useState('');
 
   const sourceValues = [...new Set(items.map(item => item.SOURCE_NM))];
@@ -37,7 +38,6 @@ const FilterModal: FC<FilterModalProps> = ({ isModalOpen, setIsModalOpen, items,
       }
       return true;
     });
-    console.log(newItems);
     setItems(newItems);
     setIsModalOpen(!isModalOpen);
   };
@@ -70,8 +70,14 @@ const FilterModal: FC<FilterModalProps> = ({ isModalOpen, setIsModalOpen, items,
       </Box>
       <Box mb={10}>
         <DatePicker
-          onChange={setDate}
-          value={date}
+          onChange={val => {
+            // @ts-ignore
+            const d = new Date(val).toDateString().split(' ');
+            // @ts-ignore
+            setDate(`${d[3]}-${d[2]}`);
+            setDatePickerDate(val);
+          }}
+          value={datePickerDate}
           format='yyyy-MM'
           maxDetail='year'
         />
