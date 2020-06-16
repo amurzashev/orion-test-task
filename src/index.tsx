@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import createStore from './duck';
 import Modal from 'react-modal';
 
+Modal.setAppElement('#root');
+
 Modal.defaultStyles.overlay = {
   display: 'flex',
   alignItems: 'center',
