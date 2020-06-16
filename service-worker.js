@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/orion-test-task/precache-manifest.ef32acbe3f909f62da05e064ef2f1557.js"
+  "/orion-test-task/precache-manifest.7ac500be8bd9ce09c3047c5071fca25b.js"
 );
 
 self.addEventListener('message', (event) => {
