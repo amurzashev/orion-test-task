@@ -2,11 +2,13 @@ import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import { Table as VTable, Column, AutoSizer } from 'react-virtualized';
 import { RootState } from 'src/duck';
+import { loadConfig } from 'src/duck/actions/config';
+import { loadItems } from 'src/duck/actions/items';
 import { TableProps } from './types';
 import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue, Footer, Button, FullscreenPlaceholder } from 'src/ui/components';
 import FilterModal from './FilterModal';
 
-const Table: FC<TableProps> = ({ items, config }) => {
+const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsAction }) => {
   const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [editing, setIsEditing] = useState(false);
@@ -20,6 +22,13 @@ const Table: FC<TableProps> = ({ items, config }) => {
       setEditingRowIndex(rowIndex);
     }
   };
+  const reloadData = () => {
+    loadConfigAction();
+    loadItemsAction();
+  };
+  const sort = () => {
+
+  };
   return (
     <Page>
       {
@@ -27,6 +36,7 @@ const Table: FC<TableProps> = ({ items, config }) => {
           {({ width, height }) => (
             <VTable
               height={height}
+              sort={sort}
               width={width}
               rowCount={items.length}
               headerHeight={60}
@@ -94,7 +104,7 @@ const Table: FC<TableProps> = ({ items, config }) => {
       }
       <Footer>
         <Button onClick={() => setIsModalOpen(!isModalOpen)}>filter</Button>
-        <Button>reload data</Button>
+        <Button onClick={reloadData}>reload data</Button>
       </Footer>
       <FilterModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </Page>
@@ -105,4 +115,8 @@ const mapState = (state: RootState) => ({
   items: state.items.data,
   config: state.config.data,
 });
-export default connect(mapState)(Table);
+const mapDispatch = {
+  loadItemsAction: loadItems,
+  loadConfigAction: loadConfig,
+};
+export default connect(mapState, mapDispatch)(Table);

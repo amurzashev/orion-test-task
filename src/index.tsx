@@ -23,8 +23,8 @@ Modal.defaultStyles.overlay = {
 
 Modal.defaultStyles.content = {
   outline: 'none',
-  height: '50%',
-  width: '50%',
+  height: 'fit-content',
+  width: '30%',
   background: '#fff',
   padding: 20,
   borderRadius: 4,
