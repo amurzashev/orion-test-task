@@ -33,7 +33,7 @@ const FilterModal: FC<FilterModalProps> = ({ isModalOpen, setIsModalOpen, items,
     const newItems = items.filter(item => {
       for (const key in filterValues) {
         //@ts-ignore
-        if (item[key] != filterValues[key])
+        if (item[key] !== filterValues[key])
           return false;
       }
       return true;

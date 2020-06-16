@@ -116,7 +116,9 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
           )}
         </AutoSizer>) : (
           <FullscreenPlaceholder>
-            <h2>no data😭</h2>
+            <h2>
+              <span role='img' aria-label='no_data'>no data😭</span>
+            </h2>
           </FullscreenPlaceholder>
         )
       }
