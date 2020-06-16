@@ -7,11 +7,16 @@ import { loadItems } from 'src/duck/actions/items';
 import { TableProps } from './types';
 import { Page, Row, HeaderRow, HeaderCell, Cell, renderValue, Footer, Button, FullscreenPlaceholder } from 'src/ui/components';
 import FilterModal from './FilterModal';
+import orderBy from 'lodash/orderBy';
 
 const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsAction }) => {
   const [editingRowIndex, setEditingRowIndex] = useState<null | number>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [editing, setIsEditing] = useState(false);
+  const [sortedItems, setSortedItems] = useState(items);
+  const [sortDirection, setSortDirection] = useState<any>('asc');
+  const [sortBy, setSortBy] = useState<string>();
+  const [key, setKey] = useState(1);
   const onButtonClick = (rowIndex: number): void => {
     if (editing) {
       console.log('saving');
@@ -26,22 +31,29 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
     loadConfigAction();
     loadItemsAction();
   };
-  const sort = () => {
-
+  const _sort = ({ sortBy }: any) => {
+    setSortedItems(
+      orderBy(sortedItems, [sortBy], [sortDirection])
+    );
+    setKey(key + 1); // workaround
+    setSortBy(sortBy);
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
   };
   return (
     <Page>
       {
-        items.length ? (<AutoSizer>
+        sortedItems.length ? (<AutoSizer>
           {({ width, height }) => (
             <VTable
+              key={key}
               height={height}
-              sort={sort}
+              onRowsRendered={() => { return; }}
+              sort={_sort}
               width={width}
-              rowCount={items.length}
+              rowCount={sortedItems.length}
               headerHeight={60}
               rowHeight={40}
-              rowGetter={({ index }) => items[index]}
+              rowGetter={({ index }) => sortedItems[index]}
               headerRowRenderer={({ columns, style }) => (
                 <HeaderRow style={style}>
                   {columns}
@@ -71,7 +83,7 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
                   width={config[col].width}
                   label={config[col].label}
                   headerRenderer={({ label, dataKey }) => (
-                    <HeaderCell w={config[col].width} key={dataKey}>{label}</HeaderCell>
+                    <HeaderCell w={config[col].width} key={dataKey}>{label} {sortBy === dataKey && (sortDirection === 'desc' ? '👇' : '👆')}</HeaderCell>
                   )}
                   cellRenderer={({ rowData, dataKey, rowIndex }) => {
                     const shouldColor = dataKey === 'VALUE_1';
