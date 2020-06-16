@@ -1,9 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { ValueProps } from './types';
+import { Input } from './shared';
 
-const Timestamp: FC = () => {
+const TimestampValue: FC<ValueProps> = ({ renderVal, disabled }) => {
+  const [val, setVal] = useState(renderVal);
   return (
-    <div>timestamp</div>
+    <Input type='text' value={val} onChange={e => setVal(e.target.value)} disabled={disabled} />
   );
 };
 
-export default Timestamp;
+export default TimestampValue;
