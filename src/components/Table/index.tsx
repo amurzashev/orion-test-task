@@ -58,14 +58,16 @@ const Table: FC<TableProps> = ({ items, config, loadConfigAction, loadItemsActio
               headerHeight={60}
               rowHeight={40}
               rowGetter={({ index }) => sortedItems[index]}
-              headerRowRenderer={({ columns, style }) => (
-                <HeaderRow style={style}>
-                  {columns}
-                </HeaderRow>
-              )}
+              headerRowRenderer={({ columns, style }) => {
+                return (
+                  <HeaderRow style={{ ...style, width: window.innerWidth - 20 }}>
+                    {columns}
+                  </HeaderRow>
+                );
+              }}
               rowRenderer={({ style, index, columns }) => {
                 return (
-                  <Row style={style} even={index % 2 === 0} key={index}>
+                  <Row style={{ ...style, width: window.innerWidth - 20 }} even={index % 2 === 0} key={index}>
                     {columns}
                   </Row>
                 );
